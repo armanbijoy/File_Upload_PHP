@@ -8,7 +8,7 @@ if(isset($_FILES['file'])){
 // var_dump($_FILES);
 // echo '</pre>';
 $ext = pathinfo($file['name'],PATHINFO_EXTENSION);
-
+$ext = strtolower($ext);
 
 $file = $_FILES['filr'];
 if($file['size'] > 5*1024*1024)
