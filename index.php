@@ -7,7 +7,7 @@ if(isset($_FILES['file'])){
 // echo '<pre>';
 // var_dump($_FILES);
 // echo '</pre>';
-
+$ext = pathinfo($file['name'],PATHINFO_EXTENSION);
 
 
 $file = $_FILES['filr'];
@@ -15,8 +15,16 @@ if($file['size'] > 5*1024*1024)
 {
     $errorMessage = 'You Cannt upload file more then 5MB';
 }
+elseif(!in_array($ext,['png','jpeg','svg','jpg'])){
 
+    $errorMessage="You can only upload images";
+
+}
+else{
     move_uploaded_file($_FILES['file']['tmp_name'], $_FILES['file']['name']);
+}
+
+    
 
 }
 ?>
