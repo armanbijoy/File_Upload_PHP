@@ -1,11 +1,23 @@
 <?php
-echo '<pre>';
-var_dump($_FILES);
-echo '</pre>';
+$errorMessage = '';
 
 
 if(isset($_FILES['file'])){
+
+// echo '<pre>';
+// var_dump($_FILES);
+// echo '</pre>';
+
+
+
+$file = $_FILES['filr'];
+if($file['size'] > 5*1024*1024)
+{
+    $errorMessage = 'You Cannt upload file more then 5MB';
+}
+
     move_uploaded_file($_FILES['file']['tmp_name'], $_FILES['file']['name']);
+
 }
 ?>
 
